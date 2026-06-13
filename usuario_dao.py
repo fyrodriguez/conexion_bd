@@ -20,3 +20,19 @@ class UsuarioDAO:
         conexion.commit()
         cursor.close()
         conexion.close()
+
+    def consultar_usuarios(self):
+
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+
+        consulta = "SELECT * FROM usuarios"
+
+        cursor.execute(consulta)
+
+        usuarios = cursor.fetchall()
+
+        cursor.close()
+        conexion.close()
+
+        return usuarios
