@@ -1,12 +1,14 @@
-import psycopg
+from usuario import Usuario
+from usuario_dao import UsuarioDAO
 
+usuario = Usuario(
+    None,
+    "Juan Perez",
+    "juan@gmail.com",
+    25
+)
 
+usuario_dao = UsuarioDAO()
+usuario_dao.insertar_usuario(usuario)
 
-def obtener_conexion():
-    return psycopg.connect(
-        host="192.168.1.71",
-        port="5432",
-        bdname="conexion",
-        user="postgres",
-        password="Alejandro10*"
-    )
+print("Usuario insertado correctamente")
