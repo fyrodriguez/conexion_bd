@@ -15,9 +15,25 @@ from usuario_dao import UsuarioDAO
 
 
 
+# usuario_dao = UsuarioDAO()
+
+# usuarios = usuario_dao.consultar_usuarios()
+
+# for usuario in usuarios:
+#     print(usuario)
+
+
+
+
 usuario_dao = UsuarioDAO()
 
-usuarios = usuario_dao.consultar_usuarios()
+usuario = Usuario(
+    1,  # este es el id_usuario que ya existe en la bd
+    "Juan Actualizado",
+    "Actualizado@gmail.com",
+    30
+)
 
-for usuario in usuarios:
-    print(usuario)
+usuario_dao.actualizar_usuario(usuario)
+
+print("Usuario actualizado correctamente")

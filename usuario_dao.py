@@ -36,3 +36,25 @@ class UsuarioDAO:
         conexion.close()
 
         return usuarios
+    
+    def actualizar_usuario(self, usuario):
+
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+
+        consulta = """
+            UPDATE usuarios
+            SET nombre = %s,
+                correo = %s,
+                edad = %s
+            WHERE id_usuario = %s
+        """
+
+        cursor.execute(
+            consulta,
+            (usuario.nombre, usuario.correo, usuario.edad, usuario.id_usuario)
+        )
+
+        conexion.commit()
+        cursor.close()
+        conexion.close()
