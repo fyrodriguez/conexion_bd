@@ -21,6 +21,8 @@ class UsuarioDAO:
         cursor.close()
         conexion.close()
 
+
+
     def consultar_usuarios(self):
 
         conexion = obtener_conexion()
@@ -37,6 +39,9 @@ class UsuarioDAO:
 
         return usuarios
     
+
+
+
     def actualizar_usuario(self, usuario):
 
         conexion = obtener_conexion()
@@ -54,6 +59,22 @@ class UsuarioDAO:
             consulta,
             (usuario.nombre, usuario.correo, usuario.edad, usuario.id_usuario)
         )
+
+        conexion.commit()
+        cursor.close()
+        conexion.close()
+
+    
+
+    
+    def eliminar_usuario(self, id_usuario):
+
+        conexion = obtener_conexion()
+        cursor = conexion.cursor()
+
+        consulta = "DELETE FROM usuarios WHERE id_usuario = %s"
+
+        cursor.execute(consulta, (id_usuario,))
 
         conexion.commit()
         cursor.close()

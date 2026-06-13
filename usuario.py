@@ -7,3 +7,5 @@ class Usuario:
         self.nombre = nombre
         self.correo = correo
         self.edad = edad
+
+    
